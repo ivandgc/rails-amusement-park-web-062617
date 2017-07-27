@@ -4,4 +4,6 @@
 <label><%= @attraction.happiness_rating  %></label>
 <label><%= @attraction.min_height %></label>
 <%= button_to "Go on this ride", get_on_ride_path, method: "get" %>
-<%= link_to "Edit Attraction", edit_attraction_path %>
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path %>
+<% end %>

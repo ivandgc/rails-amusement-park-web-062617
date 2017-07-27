@@ -11,6 +11,7 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   def create
@@ -25,6 +26,7 @@ class AttractionsController < ApplicationController
   def update
     @attraction = Attraction.find(params[:id])
     @attraction.update(attraction_params)
+    redirect_to attraction_path(@attraction)
   end
 
   def get_on_ride
@@ -38,7 +40,7 @@ class AttractionsController < ApplicationController
     end
     redirect_to user_path(@user)
   end
-  
+
   private
 
   def attraction_params
